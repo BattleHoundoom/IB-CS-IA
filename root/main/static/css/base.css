@@ -1,0 +1,288 @@
+body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+header {
+    position: sticky;
+    background: linear-gradient(to right, #2a006e, #000);
+    z-index: 1000;
+    width: 100%;
+    line-height: 1em;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.club-name {
+    font-size: 1.5rem;
+
+}
+
+.club-name h3 {
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      -225deg,
+      #42ecf5 0%,
+      #2218ed 29%,
+      #f00722 67%,
+      #fff800 100%
+    );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 1.5rem;
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+.navbar-links {
+    margin-left: 5em;
+}
+
+.navbar-links ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+    margin-bottom: 0;
+    transition: all 0.3s;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    font-size: 1.5em;
+    color:#f4ddb5;
+    display: block;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    border: 0.25em solid #000;
+    background-color: #fff;
+    border-radius: 500px;
+    transform: translateY(10px);
+}
+
+.toggle-btn {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-btn .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    .toggle-btn {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links li {
+        text-align: center;
+    }
+
+    .navbar-links li a {
+        padding: .5rem 1rem
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    footer {
+        bottom: unset;
+    }
+    .col {
+        flex-basis: 100%;
+    }
+    
+}
+
+main {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    background: linear-gradient(to right, #2a006e, #000);
+    color: #F4DDB5; /* Background color of the footer */
+
+    width: 100%;
+    z-index: 1000;
+    
+    
+    font-size: medium;
+    line-height: 1em;
+    box-sizing: border-box;
+}
+
+.row {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.col {
+    flex-basis: 15%;
+    padding: 2% 0 2% 2%;
+    height: 100%;
+    overflow: auto;
+}
+
+/* footer responsiveness */
+@media (max-width: 1440px) {
+    .col {
+        flex-basis: 30%;
+    }
+}
+
+@media (max-width: 960px) {
+    .col {
+        flex-basis: 45%;
+    }
+}
+
+@media (max-width: 650px) {
+    .col {
+        flex-basis: 60%;
+        
+    }
+}
+
+
+
+
+/* Style the circular logo */
+.logo {
+
+    width: 100%; /* Set the desired percentage width */
+    
+}
+
+.col h2 {
+    width: fit-content;
+    margin-bottom: 15%;
+    position: relative;
+}
+
+.email-id {
+    width: fit-content;
+    border-bottom: 1px solid;
+    margin: 5% 0;
+}
+
+ul {
+    padding-left: 0%;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 10%;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #F4DDB5;
+}
+
+.btn {
+    background: #f70303;
+    background-image: -webkit-linear-gradient(top, #f70303, #9213d1);
+    background-image: -moz-linear-gradient(top, #f70303, #9213d1);
+    background-image: -ms-linear-gradient(top, #f70303, #9213d1);
+    background-image: -o-linear-gradient(top, #f70303, #9213d1);
+    background-image: linear-gradient(to bottom, #f70303, #9213d1);
+    -webkit-border-radius: 32;
+    -moz-border-radius: 32;
+    border-radius: 32px;
+    font-family: Georgia;
+    color: #f4ddb5;
+    font-size: 1.5rem;
+    padding: 12px 20px 12px 20px;
+    border: solid #1f628d 0px;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+  
+.btn:hover {
+    transform: translateY(10px);
+}
+
+p {
+    margin-bottom: 7%;
+}
+
+.icons .fa-brands {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: xx-large;
+    background: transparent;
+    color: #f4ddb5;
+    margin-right: 5%;
+    cursor: pointer;
+    margin-bottom: 20%;
+    transition: all 0.3s ease-out;
+}
+
+.icons .fa-brands:hover {
+    transform: translateY(-10px);
+}
