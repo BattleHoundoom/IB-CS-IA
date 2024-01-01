@@ -7,3 +7,9 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def activities(request):
+    return render(request, 'activities.html')
+
+def wordle(request):
+    return render(request, 'wordle.html')

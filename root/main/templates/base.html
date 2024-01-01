@@ -21,7 +21,7 @@
                 <ul>
                     <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">Our Team</a></li>
-                    <li><a href="#">Club Activities</a></li>
+                    <li><a href="{% url 'activities' %}">Club Activities</a></li>
                 </ul>
             </div>
         </nav>
@@ -45,9 +45,9 @@
             <div class="col">
                 <h2>Links</h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Club activities</a></li>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">Our Team</a></li>
+                    <li><a href="{% url 'activities' %}">Club activities</a></li>
                 </ul>
             </div>
             <div class="col">
@@ -57,9 +57,7 @@
                     <i class="fa-brands fa-whatsapp"></i>
                     <i class="fa-brands fa-github"></i>
                 </div>
-                <div class="admin-wrapper">
-                    <a href="#" class="btn">Admin Portal</a> 
-                </div>
+                <button class="btn">Admin Portal</button>
             </div>
         </div>
         
