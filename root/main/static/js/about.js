@@ -53,3 +53,10 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll(".card");
 hiddenElements.forEach((card) => observer.observe(card));
 
+const modal = document.querySelector(".modal");
+const openModalButtons = document.querySelectorAll(".openModal");
+
+openModalButtons.forEach((b) => {
+    b.addEventListener('click', () => {modal.showModal();});
+})
+

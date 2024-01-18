@@ -22,8 +22,8 @@
 .box {
     width: 8vh;
     height: 8vh;
-    border: 0.1em solid var(--empty);
-    margin: 0.2em;
+    border: 0.1rem solid var(--empty);
+    margin: 0.2rem;
     color: white;
     text-transform: uppercase;
     display: grid;
@@ -42,4 +42,45 @@
 
 .box.right {
     background: var(--right);
+}
+
+.animatedVal {
+    animation: flip 0.5s ease;
+}
+
+.animatedInval {
+    animation: shake 0.3s ease-in;
+}
+
+@keyframes flip {
+    0% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    12.5% {
+        transform: translateX(-1.5rem);
+    }
+    37.5% {
+        transform: translateX(3rem);
+    }
+    62.5% {
+        transform: translateX(-3rem);
+    }
+    87.5% {
+        transform: translateX(3rem);
+    }
+    100% {
+        transform: translateX(-1.5rem);
+    }
 }

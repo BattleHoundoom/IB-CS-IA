@@ -209,8 +209,11 @@
 .title-name {
     font-size: 1.5rem;
     text-align: center;
-    color: #F4DDB5;
+    color: purple;
     padding-top: 5%;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .title-name h3 {
@@ -294,4 +297,17 @@
 
 #adi-pic {
     background-image: url("../img/ot/WhatsApp Image 2023-11-27 at 19.46.25 (10).jpeg");
+}
+
+.modal {
+    min-width: 40vw;
+    min-height: 60vh;
+    border: 0.3rem solid #F4DDB5;
+    box-shadow: 10px 10px 4px black;
+    background: #000;
+}
+
+.modal::backdrop {
+    background-color: white;
+    opacity: 0.4;
 }
