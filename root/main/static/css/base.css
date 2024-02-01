@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@600&display=swap');
+
 body {
     position: relative;
     height: 100%;
@@ -48,7 +50,8 @@ header {
     -webkit-text-fill-color: transparent;
     animation: textclip 2s linear infinite;
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    font-family: 'Podkova', serif;
 }
 
 @keyframes textclip {
@@ -78,10 +81,11 @@ header {
 
 .navbar-links li a {
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.75em;
     color:#f4ddb5;
     display: block;
     padding: 1rem;
+    font-family: 'Podkova', serif;
 }
 
 .navbar-links li:hover {
@@ -132,6 +136,8 @@ header {
     .navbar-links li {
         text-align: center;
         margin-left: 0;
+        border-bottom: #F4DDB5 solid 0.1rem;
+        
     }
 
     .navbar-links li a {
@@ -202,6 +208,13 @@ footer {
 @media (max-width: 650px) {
     .col {
         flex-basis: 60%;
+        
+    }
+}
+
+@media (max-width: 500px) {
+    .club-name h3 {
+        font-size: 1.5rem;
         
     }
 }

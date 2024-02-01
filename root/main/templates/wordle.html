@@ -11,19 +11,46 @@ Wordle
 {% endblock %}
 
 {% block content %}
+<div class="rules">
+    <h1>Custom Wordle</h1>
+    <p>Guess the secret Astronomy/Aviation related word in our custom club Wordle. Come back everyday for a new secret word!</p>
+</div>
 <div class="container">
     <div class="grid" tabindex="0">
 
     </div>
 </div>
-<div id="wordle-data" style="display: none;" data-ongoing="{% if ongoing %}true{% else %}false{% endif %}" data-data="{{ data }}">
-</div>
+<div id="wordle-data" style="display: none;" data-state="{{ state }}" data-data="{{ data }}"></div>
+<dialog id="winModal">
+    <div class="content-container">
+        <h1>Congratulations!!!</h1>
+        <h3>You Successfully Guessed the Secret word:</h3>
+        <h2>  </h2>
+        <h4> Return tomorrow for a new Wordle!!! </h4>
+    </div>
+    <button class="circle" id="CloseWinModal" onclick="closeModal('#winModal')"></button>
+</dialog>
+
+<dialog id="loseModal">
+    <div class="content-container">
+        <h1>Game Over!!!</h1>
+        <h3>Secret word:</h3>
+        <h2>  </h2>
+        <h4> Return tomorrow for a new Wordle!!! </h4>
+    </div>
+    <button class="circle" id="CloseLoseModal" onclick="closeModal('#loseModal')"></button>
+</dialog>
 {% endblock %}
 
 
 {% block scripts %}
 {% load static %}
-
+<script>
+    const daily_word = "{{ secret }}";
+    document.querySelectorAll(".content-container h2").forEach((e) => {
+        e.textContent = daily_word;
+    })
+</script>
 <script defer src="{% static './js/wordle.js' %}"></script>
 <script src="https://kit.fontawesome.com/be9ab13814.js" crossorigin="anonymous"></script>
 {% endblock %}

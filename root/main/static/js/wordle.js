@@ -1,12 +1,39 @@
-const wordList = ['penis', 'house', 'radio', 'flame', 'shoot', 'crane'];
+function reloadIfDayChanged() {
+    // Get the current date
+    const currentDate = new Date();
+
+    // Check if the day has changed
+    if (currentDate.getDate() !== window.lastCheckedDay) {
+        window.location.reload(true); // Reload the page
+    }
+
+    // Update the last checked day
+    window.lastCheckedDay = currentDate.getDate();
+}
+
+// Set the initial value for the last checked day
+window.lastCheckedDay = new Date().getDate();
+
+// Check for day changes every minute (adjust the interval as needed)
+setInterval(reloadIfDayChanged, 60000);
+
+
+//const wordList = ['penis', 'house', 'radio', 'flame', 'shoot', 'crane'];
 
 var state = {
-    ans: wordList[Math.floor(Math.random() * wordList.length)],
+    ans: "",
     grid: Array(6).fill().map(() => Array(5).fill('')),
     currentRow: 0,
     currentCol: 0,
-    ongoing: true,
+    ongoing: 0,
 };
+
+function closeModal(modal_id) {
+    modal = document.querySelector(modal_id);
+    modal.close();
+    modal.style.display = "none";
+}
+
 
 function getWord() {
     return state.grid[state.currentRow].join('');
@@ -73,11 +100,18 @@ function revealWord(guess) {
     //var pending = true;
     //setTimeout(() => {
     if (state.ans === guess) {
-        state.ongoing = false;
+        state.ongoing = 1;
+        setTimeout(() => {
+            document.getElementById("winModal").style.display = "flex";
+            document.getElementById("winModal").showModal();
+        }, 2000);
         
     } else if (state.currentRow === 5) {
-        state.ongoing = false;
-        
+        state.ongoing = 2;
+        setTimeout(() => {
+            document.getElementById("loseModal").style.display = "flex";
+            document.getElementById("loseModal").showModal();
+        }, 2000);
     }
     //}, 3 * 500);
     
@@ -116,62 +150,15 @@ function drawBox(container, row, col) {
     return box;
 }
 
-function eventListenerHandler() {
-
-}
-
-/*function eventListener() {
-    if (state.ongoing) {
-        document.body.onkeydown = (e) => {
-            if (e.key === "Enter") {
-                if (state.currentCol === 5) {
-                    const word = getWord();
-                    EvalWord(word).then(result => {
-                        if (result) {
-                            console.log("inprogress");
-                            revealWord(word);
-                            console.log(state.ongoing);
-                            state.currentRow++;
-                            state.currentCol = 0;
-                            fetch('/main/update_wordle_progress/', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                },
-                                body: `guess=${encodeURIComponent(word)}&pending=${state.ongoing}`,
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log(data.message);  // Handle the response from the server
-                            })
-                            .catch(error => console.error('Error:', error));
-                        } else {
-                            revealIncorrect();
-                        }
-                    }).catch(error => {
-                        console.error('Error fetching data from Datamuse API:', error);
-                        revealIncorrect();
-                    });
-                }
-            }
-            if (e.key === "Backspace") {
-                removeLetter();
-            }
-            if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
-                addLetter(e.key);
-            }
-
-            updateGrid();
-        }
-    }
-}*/
-
 function eventListener() {
     return (e) => {
-        if (state.ongoing) {
+        //console.log(typeof state.ongoing);
+        if (!state.ongoing) {
+            //console.log("state check passed");
             if (e.key === "Enter") {
                 if (state.currentCol === 5) {
                     const word = getWord();
+                    console.log(word);
                     EvalWord(word).then(result => {
                         if (result) {
                             console.log("inprogress");
@@ -184,11 +171,11 @@ function eventListener() {
                                 headers: {
                                     'Content-Type': 'application/x-www-form-urlencoded',
                                 },
-                                body: `guess=${encodeURIComponent(word)}&pending=${state.ongoing}`,
+                                body: `guess=${encodeURIComponent(word)}&state=${state.ongoing}`,
                             })
                             .then(response => response.json())
                             .then(data => {
-                                console.log(data.message);  // Handle the response from the server
+                                console.log(data.message);  
                             })
                             .catch(error => console.error('Error:', error));
                         } else {
@@ -219,16 +206,19 @@ document.body.addEventListener('keydown', eventListener());
 
 function setup() {
     var wordleDataElement = document.getElementById('wordle-data');
-    var subongoing = wordleDataElement.getAttribute('data-ongoing');
+    //var subongoing = wordleDataElement.getAttribute('data-ongoing');
+    var gameState = wordleDataElement.getAttribute('data-state');
     var data = wordleDataElement.getAttribute('data-data');
     //var curr_row = wordleDataElement.getAttribute('data-row');
-    if (subongoing === "true") {
+    /*if (subongoing === "true") {
         state.ongoing = true;
     } else {
         state.ongoing = false;
-    }
+    }*/
     //data = "bakedbooks";
-    console.log("Ongoing:", state.ongoing);
+    state.ongoing = parseInt(gameState);
+
+    console.log("State:", state.ongoing);
     console.log("Data:", data);
     //console.log("curr_row:", curr_row);
     
@@ -264,13 +254,22 @@ function setup() {
     }
     eventListener();
 
-
-    grid.addEventListener('keydown', eventListener());
+    
+    if (state.ongoing === 1) {
+        document.getElementById("winModal").style.display = "flex";
+        document.getElementById("winModal").showModal();
+    } else if (state.ongoing === 2) {
+        document.getElementById("loseModal").style.display = "flex";
+        document.getElementById("loseModal").showModal();
+    }
+    
+    
+    //grid.addEventListener('keydown', eventListener());
 
     
     
     
     console.log(state.ans);
 }
-
+state.ans = daily_word.toLowerCase();
 setup();

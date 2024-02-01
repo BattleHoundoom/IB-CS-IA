@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Alike+Angular&family=Foldit:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mali:ital@1&display=swap');
 
+:root {
+    --pri: #000;
+    --acc: #F4DDB5;
+    --sec: purple;
+}
 
 .title-banner {
     height: 10vh;
@@ -75,7 +82,7 @@
     background: linear-gradient(#000 0%, purple 50%, #000 100%);
 }
 
-.card {
+/*.card {
     height: 50vh;
     width: 20vw;
     border: 0.25em solid #f4ddb5;
@@ -89,7 +96,7 @@
     pointer-events: auto;
     filter: blur(2px);
     transition: 1s;
-}
+}*/
 
 .card {
     height: 55vh;
@@ -106,6 +113,22 @@
     filter: blur(4px);
     transition: 1s;
 }
+
+.card-modal {
+    height: 80vh;
+    min-width: 40vw;
+    max-width: 60vw;
+    display: flex;
+    flex-direction: row;
+    border: 0.25em solid #f4ddb5;
+    border-radius: 5%;
+    overflow: hidden;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 .show {
 
@@ -143,6 +166,38 @@
     background-repeat: no-repeat;
 }
 
+.card-modal .pfp {
+    height: 100%;
+    width: 50%;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.card-modal .desc {
+    height: 100%;
+    width: 50%;
+    background: #000;
+    color: #F4DDB5;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-size: 1.5rem;
+    justify-content: space-evenly;
+    padding-left: 3.5%;
+    padding-right: 3.5%;
+    padding-bottom: 7.5%;
+    
+}
+
+.card-modal .desc .title-name {
+    color: var(--sec);
+    font-size: 1.75rem;
+    width: 100%;
+    height: 10%;
+}
+
 
 
 .card .desc {
@@ -178,8 +233,32 @@
     background-color: purple;
 }
 
+.para {
+    height: 70%;
+    width: 100%;
+    background: transparent;
+    color: #F4DDB5;
+    font-size: 1.5rem;
+    justify-content: center;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Set the scrollbar width to a thin size (works in Firefox) */
+    scrollbar-color: transparent transparent; /* Set the scrollbar color to transparent (works in Firefox) */
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
+    scrollbar-color: transparent transparent;
+    font-family: 'Mali', cursive;
+    padding-top: 5%;
+}
+
+.para::-webkit-scrollbar {
+    width: 5px;
+}
+
+.para::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set the thumb color to transparent */
+  }
+
 .name {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -202,21 +281,23 @@
     -webkit-text-fill-color: transparent;
     animation: textclip 2s linear infinite;
     display: inline-block;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-family: 'Trocchi', serif;
 }
 
 .title-name {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     text-align: center;
-    color: purple;
+    color: var(--sec);
     padding-top: 5%;
     font-weight: bolder;
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.025rem var(--pri); 
 }
 
-.title-name h3 {
+/*.title-name h3 {
     text-transform: uppercase;
     background-image: linear-gradient(
       -225deg,
@@ -236,7 +317,7 @@
     animation: textclip 2s linear infinite;
     display: inline-block;
     font-size: 1.25rem;
-}
+}*/
 
 @keyframes textclip {
     to {
@@ -252,6 +333,10 @@
     .carousel-3 .card.active {
         display: inline;
         min-width: 50vw;
+    }
+
+    .card-modal {
+        max-width: 100%;
     }
 }
 
@@ -300,14 +385,70 @@
 }
 
 .modal {
-    min-width: 40vw;
-    min-height: 60vh;
-    border: 0.3rem solid #F4DDB5;
-    box-shadow: 10px 10px 4px black;
-    background: #000;
+    display: flex;
+    flex-direction: row;
+    
+    border: 0;
+    background: transparent;
 }
 
-.modal::backdrop {
+/*.modal::backdrop {
     background-color: white;
     opacity: 0.4;
+}*/
+
+
+.circle {
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border: 4px solid var(--acc);
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 20px;
+    top: 2%;
+    right: 1%;
+    transform: scale(0.7);
+    transition: all 0.2s;
+   /*@include transform-origin(100%,100%);
+   */
+   /*@include transform-origin(0%,0%);
+   */
 }
+
+.circle:hover {
+    transform: scale(1);
+}
+.circle:after {
+    width: 24px;
+    height: 4px;
+    background-color: var(--acc);
+    content: "";
+    left: 50%;
+    top: 50%;
+    margin-left: -12px;
+    margin-top: -2px;
+    position: absolute;
+    transform: rotate(45deg);
+    transition: all 0.2s;
+}
+.circle:before {
+    left: 50%;
+    top: 50%;
+    margin-left: -12px;
+    margin-top: -2px;
+    width: 24px;
+    height: 4px;
+    background-color: var(--acc);
+    content: "";
+    position: absolute;
+    transform: rotate(-45deg);
+    transition: all 0.2s;
+}
+
+
+
+
+

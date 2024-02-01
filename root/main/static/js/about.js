@@ -34,6 +34,113 @@ function setActiveCard(index, sect) {
 
 }
 
+function OpenModal(pic_id, title, name) {
+    return new Promise(function(resolve) {
+        const modal = document.createElement('dialog');
+        modal.classList.add('modal');
+    
+        const card = document.createElement('div');
+        card.classList.add('card-modal');
+    
+        const closebtn = document.createElement('button');
+        closebtn.classList.add('circle');
+        
+    
+    
+        const pfp = document.createElement('div');
+        pfp.classList.add('pfp');
+        pfp.id = pic_id;
+    
+        const titleName = document.createElement('div');
+        titleName.classList.add("title-name");
+        titleName.textContent = title;
+        //pfp.innerHTML = '<div class="title-name">' + title + '</div>';
+    
+        const desc = document.createElement('div');
+        desc.classList.add('desc');
+    
+        const nameDiv = document.createElement('div');
+        nameDiv.classList.add('name');
+        const nameHeading = document.createElement('h3');
+        nameHeading.textContent = name;
+        nameDiv.appendChild(nameHeading);
+    
+        const para = document.createElement("div");
+        para.classList.add('para');
+        fetch(`/static/text/${pic_id}.txt`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(text => {
+                //console.log("no problem so far");
+                para.textContent = text;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    
+    
+    
+        desc.appendChild(titleName);
+        desc.appendChild(nameDiv);
+        desc.appendChild(para);
+    
+        card.appendChild(pfp);
+        card.appendChild(desc);
+        card.appendChild(closebtn);
+        
+    
+        modal.appendChild(card);
+        
+    
+    
+    
+        document.body.appendChild(modal); // Append modal to the body
+        modal.showModal();
+        document.body.style.overflow = "hidden";
+    
+        
+        resolve();    
+    });
+
+}
+
+function closeDialog() {
+    const modal = document.querySelector("dialog");
+    console.log("we r in");
+    console.log(modal);
+    const btn = document.querySelector(".circle");
+    btn.addEventListener("click", modalbtnhandler);
+    
+    //document.removeEventListener('click', handleClickOutside);
+    //document.getElementById("overlay").style.display = "none";
+}
+
+function modalbtnhandler() {
+    const btn = document.querySelector(".circle");
+    btn.removeEventListener("click", modalbtnhandler);
+    const modal = document.querySelector("dialog");
+    console.log(modal);
+    
+    modal.close();
+    modal.remove();
+    console.log("closed");
+    
+    document.body.style.overflow = "visible";
+    reset();
+    
+}
+
+/*function handleClickOutside(event) {
+    var dialog = document.querySelector('dialog');
+    if (!dialog.contains(event.target)) {
+        closeDialog();
+    }
+}*/
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         console.log(entry);
@@ -53,10 +160,34 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll(".card");
 hiddenElements.forEach((card) => observer.observe(card));
 
-const modal = document.querySelector(".modal");
-const openModalButtons = document.querySelectorAll(".openModal");
+/*const modal = document.querySelector(".modal");
+const modal_pfp = modal.querySelector(".pfp");
+const modal_desc = modal.querySelector(".desc");
+const modal_title = modal_pfp.querySelector(".title-name");
+const modal_name_pro = modal_desc.querySelector(".name");
+const modal_name = modal_name_pro.querySelector("h3");*/
+function reset() {
+    console.log("back here??");
+    const openModalButtons = document.querySelectorAll(".openModal");
 
-openModalButtons.forEach((b) => {
-    b.addEventListener('click', () => {modal.showModal();});
-})
+    openModalButtons.forEach((b) => {
+        b.addEventListener('click', modalClickHandler);
+    });
+}
 
+
+
+function modalClickHandler(event) {
+    event.target.removeEventListener('click', modalClickHandler);
+    //console.log("loding");
+        //console.log(b.parentNode.querySelector(".name").querySelector("h3").textContent);
+    OpenModal(event.target.parentNode.parentNode.querySelector(".pfp").id, event.target.parentNode.parentNode.querySelector(".pfp").querySelector(".title-name").textContent, event.target.parentNode.querySelector(".name").querySelector("h3").textContent).then(function() {
+        closeDialog();
+    });
+           
+        
+        //circlebutton.addEventListener("click", closeDialog());
+}
+
+
+reset();
