@@ -19,7 +19,7 @@
 }
 
 .avi {
-    background-image: url("../img/skybg.jpg") !important;
+    background: linear-gradient(rgb(5, 92, 242), #05ddfa);
     width: 100%;
 
     position: relative;
@@ -175,4 +175,26 @@
     20% {
       transform: translateY(-20px)
     }
+}
+
+.cloud {
+    position: absolute;
+    top: 10%; /* Adjust as needed */
+    left: 53%; /* Adjust as needed */
+    width: 40%; /* Adjust as needed */
+    z-index: 1; /* Place the cloud above the text */
+}
+
+
+
+
+
+h1 {
+    position: absolute;
+    top: 20%; /* Match the cloud position */
+    left: 65%; /* Match the cloud position */
+    z-index: 2; /* Place the text above the cloud */
+    font-size: 3em; /* Adjust as needed */ /* Match the sky background color */
+    mix-blend-mode: multiply; /* Blend the text color with the background */
+    color: #0579f5;
 }
