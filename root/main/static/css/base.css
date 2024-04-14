@@ -8,7 +8,24 @@ body {
     padding: 0;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
 
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5vw;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: grey;
+    height: 50px !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #000;
+}
 
 header {
     position: sticky;
@@ -26,10 +43,7 @@ header {
     
 }
 
-.club-name {
-    font-size: 1.5rem;
 
-}
 
 .club-name h3 {
     text-transform: uppercase;
@@ -40,6 +54,8 @@ header {
       #f00722 67%,
       #fff800 100%
     );
+    padding-top: 1%;
+    margin: 0;
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
@@ -97,7 +113,7 @@ header {
 
 .toggle-btn {
     position: absolute;
-    top: .75rem;
+    top: 1.5rem;
     right: 1rem;
     display: none;
     flex-direction: column;
@@ -113,50 +129,7 @@ header {
     border-radius: 10px;
 }
 
-@media (max-width: 700px) {
-    .toggle-btn {
-        display: flex;
-    }
 
-    .navbar-links {
-        display: none;
-        width: 100%;
-    }
-
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar-links ul {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .navbar-links li {
-        text-align: center;
-        margin-left: 0;
-        border-bottom: #F4DDB5 solid 0.1rem;
-        
-    }
-
-    .navbar-links li a {
-        padding: .5rem 1rem
-    }
-
-    .navbar-links.active {
-        display: flex;
-        margin-left: 0;
-    }
-
-    footer {
-        bottom: unset;
-    }
-    .col {
-        flex-basis: 100%;
-    }
-    
-}
 
 main {
     height: 100%;
@@ -203,6 +176,69 @@ footer {
     .col {
         flex-basis: 45%;
     }
+
+    .col h2 {
+        text-decoration: underline;
+    }
+
+    #navbar-title, .navbar-links li a {
+        font-size: 1.25rem;
+        padding: 0.25rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .toggle-btn {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links li {
+        text-align: center;
+        margin-left: 0;
+        border-bottom: #F4DDB5 solid 0.1rem;
+        
+    }
+
+    .navbar-links li a {
+        padding: .5rem 1rem
+    }
+
+    .navbar-links.active {
+        display: flex;
+        margin-left: 0;
+    }
+
+    footer {
+        bottom: unset;
+    }
+    .col {
+        flex-basis: 100%;
+    }
+    #navbar-title {
+        font-size: 1.5rem;
+    }
+    .club-name h3 {
+        margin-top: 5%;
+    }
+
+    .club-name {
+        margin-left: 3%;
+    }
 }
 
 @media (max-width: 650px) {
@@ -210,12 +246,18 @@ footer {
         flex-basis: 60%;
         
     }
+    .col h2 {
+        text-decoration: underline;
+    }
 }
 
 @media (max-width: 500px) {
     .club-name h3 {
         font-size: 1.5rem;
         
+    }
+    .col h2 {
+        text-decoration: underline;
     }
 }
 
@@ -303,4 +345,27 @@ p {
 
 .icons .fa-brands:hover {
     transform: translateY(-10px);
+}
+
+.footer-ul li a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: 3px;
+}
+
+.footer-ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #F4DDB5; /* Change to desired underline color */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.footer-ul li a:hover::before {
+    width: 100%;
+    transition: width 0.3s ease;
 }
