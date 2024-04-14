@@ -328,7 +328,7 @@ p {
     margin-bottom: 7%;
 }
 
-.icons .fa-brands {
+.icons a .fa-brands {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -343,7 +343,7 @@ p {
     transition: all 0.3s ease-out;
 }
 
-.icons .fa-brands:hover {
+.icons a .fa-brands:hover {
     transform: translateY(-10px);
 }
 
