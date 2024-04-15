@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@600&display=swap');
+
+body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5vw;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: grey;
+    height: 50px !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #000;
+}
+
+header {
+    position: sticky;
+    background: #000;
+    z-index: 1000;
+    width: 100%;
+    line-height: 1em;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+.club-name h3 {
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      -225deg,
+      #42ecf5 0%,
+      #2218ed 29%,
+      #f00722 67%,
+      #fff800 100%
+    );
+    padding-top: 1%;
+    margin: 0;
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 1.75rem;
+    font-family: 'Podkova', serif;
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+.navbar-links {
+    margin-left: 5em;
+}
+
+.navbar-links ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    border: 0.25em solid #000;
+    transition: all 0.3s;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    font-size: 1.75em;
+    color:#f4ddb5;
+    display: block;
+    padding: 1rem;
+    font-family: 'Podkova', serif;
+}
+
+.navbar-links li:hover {
+    border: 0.25em solid #f4ddb5;
+    background-color: #000;
+    border-radius: 500px;
+    
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-btn .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+
+main {
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    background: #000;
+    color: #F4DDB5; /* Background color of the footer */
+
+    width: 100%;
+    z-index: 1000;
+    
+    
+    font-size: medium;
+    line-height: 1em;
+    box-sizing: border-box;
+}
+
+.row {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.col {
+    flex-basis: 15%;
+    padding: 2% 0 2% 2%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* footer responsiveness */
+@media (max-width: 1440px) {
+    .col {
+        flex-basis: 30%;
+    }
+}
+
+@media (max-width: 960px) {
+    .col {
+        flex-basis: 45%;
+    }
+
+    .col h2 {
+        text-decoration: underline;
+    }
+
+    #navbar-title, .navbar-links li a {
+        font-size: 1.25rem;
+        padding: 0.25rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .toggle-btn {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links li {
+        text-align: center;
+        margin-left: 0;
+        border-bottom: #F4DDB5 solid 0.1rem;
+        
+    }
+
+    .navbar-links li a {
+        padding: .5rem 1rem
+    }
+
+    .navbar-links.active {
+        display: flex;
+        margin-left: 0;
+    }
+
+    footer {
+        bottom: unset;
+    }
+    .col {
+        flex-basis: 100%;
+    }
+    #navbar-title {
+        font-size: 1.5rem;
+    }
+    .club-name h3 {
+        margin-top: 5%;
+    }
+
+    .club-name {
+        margin-left: 3%;
+    }
+}
+
+@media (max-width: 650px) {
+    .col {
+        flex-basis: 60%;
+        
+    }
+    .col h2 {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 500px) {
+    .club-name h3 {
+        font-size: 1.5rem;
+        
+    }
+    .col h2 {
+        text-decoration: underline;
+    }
+}
+
+
+
+
+/* Style the circular logo */
+.logo {
+
+    width: 100%; /* Set the desired percentage width */
+    
+}
+
+.col h2 {
+    width: fit-content;
+    margin-bottom: 15%;
+    position: relative;
+}
+
+.email-id {
+    width: fit-content;
+    border-bottom: 1px solid;
+    margin: 5% 0;
+}
+
+ul {
+    padding-left: 0%;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 10%;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #F4DDB5;
+}
+
+.btn {
+    background: transparent;
+    -webkit-border-radius: 32;
+    -moz-border-radius: 32;
+    border-radius: 32px;
+    font-family: Georgia;
+    color: #f4ddb5;
+    font-size: 1.5rem;
+    padding: 12px 20px 12px 20px;
+    border: solid #f4ddb5 0.15em;
+    text-decoration: none;
+    position: relative;
+    width: fit-content;
+    transition: all 0.3s ease;
+    cursor: not-allowed;
+}
+  
+#change-to-btn:hover-when-ready {
+    background: #f70303;
+    background-image: -webkit-linear-gradient(top, #f70303, #9213d1);
+    background-image: -moz-linear-gradient(top, #f70303, #9213d1);
+    background-image: -ms-linear-gradient(top, #f70303, #9213d1);
+    background-image: -o-linear-gradient(top, #f70303, #9213d1);
+    background-image: linear-gradient(to bottom, #f70303, #9213d1);
+    transform: scale(1.1);
+}
+
+p {
+    margin-bottom: 7%;
+}
+
+.icons a .fa-brands {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: xx-large;
+    background: transparent;
+    color: #f4ddb5;
+    margin-right: 5%;
+    cursor: pointer;
+    margin-bottom: 20%;
+    transition: all 0.3s ease-out;
+}
+
+.icons a .fa-brands:hover {
+    transform: translateY(-10px);
+}
+
+.footer-ul li a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding-bottom: 3px;
+}
+
+.footer-ul li a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #F4DDB5; /* Change to desired underline color */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.footer-ul li a:hover::before {
+    width: 100%;
+    transition: width 0.3s ease;
+}

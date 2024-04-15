@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-cc_yy2jy3@c1t54()35i=dp^#^v5z@7j8k(ws4hg3(d%t-y-o#'
+SECRET_KEY = "k+-nskaut)e8rnk$_*u6#q8b7n)d%i$qh^#8ct@#(bygtr@bw%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/ShangHai'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -116,7 +118,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "main/static")
+]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -127,3 +136,37 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'mysite.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
