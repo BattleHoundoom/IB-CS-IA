@@ -64,7 +64,7 @@ function EvalWord(word) {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 resolve(data[0].word === word);
             })
             .catch(error => {
@@ -83,13 +83,10 @@ function revealWord(guess) {
 
         setTimeout(() => {
             if (letter === state.ans[i]) {
-                //console.log("green", letter, state.ans[i]);
                 box.classList.add('right');
             } else if (state.ans.includes(letter)) {
-                //console.log("yellow", letter);
                 box.classList.add('wrong');
             } else {
-                //console.log("grey", letter, state.ans[i]);
                 box.classList.add('empty');
             }
         }, ((i + 1) * 500) / 2);
@@ -100,15 +97,17 @@ function revealWord(guess) {
     //var pending = true;
     //setTimeout(() => {
     if (state.ans === guess) {
-        state.ongoing = 1;
+        state.ongoing = 2;
         setTimeout(() => {
+            document.getElementById("reveau").textContent = state.ans;
             document.getElementById("winModal").style.display = "flex";
             document.getElementById("winModal").showModal();
         }, 2000);
         
     } else if (state.currentRow === 5) {
-        state.ongoing = 2;
+        state.ongoing = 3;
         setTimeout(() => {
+            document.getElementById("revea").textContent = state.ans;
             document.getElementById("loseModal").style.display = "flex";
             document.getElementById("loseModal").showModal();
         }, 2000);
@@ -152,21 +151,17 @@ function drawBox(container, row, col) {
 
 function eventListener() {
     return (e) => {
-        //console.log(typeof state.ongoing);
-        if (!state.ongoing) {
-            //console.log("state check passed");
+        if (!state.ongoing || state.ongoing === 1) {
             if (e.key === "Enter") {
                 if (state.currentCol === 5) {
                     const word = getWord();
                     console.log(word);
                     EvalWord(word).then(result => {
                         if (result) {
-                            console.log("inprogress");
                             revealWord(word);
-                            console.log(state.ongoing);
                             state.currentRow++;
                             state.currentCol = 0;
-                            fetch('/main/update_wordle_progress/', {
+                            fetch('/update_wordle_progress/', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -175,7 +170,7 @@ function eventListener() {
                             })
                             .then(response => response.json())
                             .then(data => {
-                                console.log(data.message);  
+                                //console.log(data.message);  
                             })
                             .catch(error => console.error('Error:', error));
                         } else {
@@ -210,17 +205,11 @@ function setup() {
     var gameState = wordleDataElement.getAttribute('data-state');
     var data = wordleDataElement.getAttribute('data-data');
     //var curr_row = wordleDataElement.getAttribute('data-row');
-    /*if (subongoing === "true") {
-        state.ongoing = true;
-    } else {
-        state.ongoing = false;
-    }*/
-    //data = "bakedbooks";
+    
     state.ongoing = parseInt(gameState);
 
     console.log("State:", state.ongoing);
     console.log("Data:", data);
-    //console.log("curr_row:", curr_row);
     
 
     const grid = document.querySelector(".grid");
@@ -255,10 +244,12 @@ function setup() {
     eventListener();
 
     
-    if (state.ongoing === 1) {
+    if (state.ongoing === 2) {
+        document.getElementById("reveau").textContent = state.ans;
         document.getElementById("winModal").style.display = "flex";
         document.getElementById("winModal").showModal();
-    } else if (state.ongoing === 2) {
+    } else if (state.ongoing === 3) {
+        document.getElementById("revea").textContent = state.ans;
         document.getElementById("loseModal").style.display = "flex";
         document.getElementById("loseModal").showModal();
     }
@@ -269,7 +260,24 @@ function setup() {
     
     
     
-    console.log(state.ans);
 }
-state.ans = daily_word.toLowerCase();
-setup();
+
+async function fetchDailyWord() {
+    try {
+        const response = await fetch('/api/secret-word/');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const responseJson = await response.json();
+        state.ans = (responseJson.secret_word).toLowerCase();
+        console.log('Secret Word:', state.ans);
+        // Use the secret word in your Wordle game
+
+        setup();
+
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+fetchDailyWord();

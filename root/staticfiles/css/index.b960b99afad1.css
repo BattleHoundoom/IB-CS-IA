@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Wellfleet&family=Workbench&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wellfleet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@600&display=swap');
+
+:root {
+    --pri: #000;
+    --acc: #F4DDB5;
+    --sec: #800080;
+    --wobble: -20px;
+    --tilt: 10deg;
+    --sec-light: #ff058a;
+    --sec-dark: #5d05ff;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background: var(--pri);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 3%;
+}
+
+.about {
+    
+    width: 100%;
+    height: 75vh;
+    background: var(--pri);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 3%;
+}
+
+.desc-container {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.desc-header {
+    color: var(--acc);
+    font-size: 2.5rem;
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+}
+
+.brief-desc {
+    color: var(--acc);
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Wellfleet", monospace;
+}
+
+.teambtn,
+.teambtn:link,
+.teambtn:visited {
+    color: var(--acc);
+    font-size: 2rem;
+    background: linear-gradient(to right, var(--sec-dark), var(--sec-light));
+    border: 0.15rem solid var(--acc);
+    border-radius: 50px;
+    width: 35%;
+    height: 12.5%;
+    display: flex; /* Ensure the <a> tag behaves like a block element */
+    align-items: center; /* Center the text horizontally */
+    justify-content: space-evenly; /* Center the text vertically */
+    text-decoration: none; /* Remove default underline */
+    font-weight: bolder;
+    font-family: 'Podkova', serif;
+    transition: border-width 0.3s ease, width 0.3s ease, transform 0.3s ease;
+}
+
+.teambtn:hover {
+    transform: scale(1.1);
+    border-width: 0.3rem;
+}
+
+.svg-container {
+    position: relative;
+    width: 40%;
+    border: 5px solid var(--sec);
+    padding: 0;
+    overflow: hidden;
+    border-radius: 49px;
+}
+
+#grppic {
+    width: 100%;
+}
+
+.blog {
+    width: 100%;
+    height: 75vh;
+    background: var(--pri);
+    text-align: center;
+}
+
+.checkoutblog {
+    color: var(--acc);
+    font-size: 2.5rem;
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+    padding-top: 3%;
+}
+
+.b-articles {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    background: var(--pri);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.altar-link {
+    display: block;  /* Ensure <a> tag takes up block space */
+    max-width: 25%;  /* Match the card max-width */
+    height: 80%;     /* Match the card height */
+    margin: 10px;
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+}
+
+.altar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid darkblue;
+    border-radius: 5%;
+    text-align: center;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.altar img {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    object-position: center;
+    transform: translate(-50%, -50%);
+    border: 3px solid darkblue;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.altar h2 {
+    margin-top: auto;
+    text-align: center;
+    color: var(--acc);
+    font-size: 1rem;
+    padding: 5%;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.linedivider {
+    position: relative;
+    width: 100%;
+    height: 2px; /* Adjust thickness as needed */
+    background: linear-gradient(to right, var(--pri), rgba(0,0,0,0.5), var(--pri)); /* White gradient fading out at both ends */
+    background-size: 100% 100%;
+}
+
+.geo {
+    
+    width: 100%;
+    height: 75vh;
+    background: var(--pri);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.findus {
+    color: var(--acc);
+    font-size: 2.5rem;
+    margin: 3%;
+    margin-bottom: 0;
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+    
+}
+
+.map {
+    margin: 3%;
+    border-image-slice: 13 13 13 13;
+    border-image-width: 13px 13px 13px 13px;
+    border-image-outset: 10px 10px 10px 10px;
+    border-image-repeat: repeat repeat;
+    border-image-source: url("https://mdn.github.io/css-examples/tools/border-image-generator/border-image-4.png");
+    border-style: solid;
+    border-color: var(--acc);
+    width: 65%;
+    height: 70%;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+.club, .school {
+    flex: 1;
+    max-width: 15%;
+    display: block;
+    text-align: center;
+    
+}
+
+#schooltitle {
+    font-size: 2.5rem;
+}
+
+.domain {
+    color: white;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 1.75rem;
+    font-family: 'Podkova', serif;
+    margin-bottom: 0;
+}
+
+#asto {
+    color: var(--sec); /* Set initial text color */
+
+}
+
+
+
+#avin {
+    color: aqua;
+}
+
+.club img {
+    width: 100%;
+    animation: wobble 3s infinite ease-in-out;
+    animation-delay: -1.5s;
+}
+
+.school img {
+    width: 100%;
+    animation: wobble 3s infinite ease-in-out;
+    
+}
+
+#handshake {
+    max-width: 10%;
+    animation: svgRotate 3s infinite ease-in-out;
+}
+
+@keyframes wobble {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(var(--wobble));}
+    100% { transform: translateY(0);}
+}
+
+@keyframes textFlash {
+    0% { background-position: 100% 0; }
+    50% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
+
+@keyframes svgRotate {
+    0% { transform: rotateZ(calc(-1 * var(--tilt))); }
+    50% { transform: rotateZ(var(--tilt)); }
+    100% { transform: rotateZ(calc(-1 * var(--tilt))); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@media (max-width: 1480px) {
+    .club, .school {
+        max-width: 20%;
+    }
+    .teambtn,
+    .teambtn:link,
+    .teambtn:visited {
+        width: 48%;
+        font-size: 1.75rem;
+    }
+
+    .brief-desc {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 1080px) {
+    :root {
+        --wobble: -10px;
+    }
+    .club, .school {
+        max-width: 25%;
+    }
+
+    .map {
+        width: 85%;
+        height: 70%;
+    }
+
+    #handshake {
+        max-width: 15%;
+    }
+
+    .teambtn,
+    .teambtn:link,
+    .teambtn:visited {
+        width: 60%;
+    }
+
+    .brief-desc {
+        font-size: 1rem;
+    }
+
+    .blog {
+        height: 65vh;
+    }
+
+
+
+    .altar h2 {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 960px) {
+    .geo {
+        justify-content: space-evenly;
+    }
+    .teambtn,
+    .teambtn:link,
+    .teambtn:visited {
+        width: 70%;
+        font-size: 1.5rem;
+    }
+
+    
+}
+
+
+
+@media (max-width: 720px) {
+    :root {
+        --wobble: -7px;
+        --tilt: 15deg;
+    }
+    .club, .school {
+        max-width: 30%;
+    }
+    .map {
+        width: 85%;
+        height: 70%;
+    }
+
+    #handshake {
+        max-width: 20%;
+    }
+    
+    #schooltitle {
+        font-size: 1.75rem;
+    }
+    
+    .domain {
+        font-size: 1.25rem;
+    }
+
+    .hero {
+        height: 35vh;
+    }
+
+    .teambtn,
+    .teambtn:link,
+    .teambtn:visited {
+        width: 90%;
+    }
+
+    
+    .blog {
+        height: 55vh;
+    }
+
+    .altar h2 {
+        font-size: 0.6rem;
+    }
+    
+}
+
+@media (max-width: 650px) {
+    .teambtn,
+    .teambtn:link,
+    .teambtn:visited {
+        font-size: 1.5rem;
+    }
+
+    .brief-desc {
+        font-size: 0.8rem;
+    }
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+}
+

@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 
 {% block title %}
-OUR TEAM
+Our Team
 {% endblock %}
 
 {% block links %}
@@ -62,16 +62,23 @@ OUR TEAM
 </section>
 <section class="desmar">
     <div class="title-banner">Design & Marketing</div>
-    <div class="carousel">
+    <div class="carousel-3">
         <div class="arrow arrow-left" onclick="changeCard(-1, '.desmar')"><</div>
-        <div class="card active" onclick="setActiveCard(0, '.desmar')">
+        <div class="card" onclick="setActiveCard(0, '.desmar')">
+            <div class="pfp" id="arn-pic"><div class="title-name">Head of Marketing</div></div>
+            <div class="desc">
+                <div class="name"><h3>Arin Santosh</h3></div>
+                <button class="openModal">See More</button>
+            </div>
+        </div>
+        <div class="card active" onclick="setActiveCard(1, '.desmar')">
             <div class="pfp" id="sam-pic"><div class="title-name">Head of Design</div></div>
             <div class="desc">
                 <div class="name"><h3>Samidha Panicker</h3></div>
                 <button class="openModal">See More</button>
             </div>
         </div>
-        <div class="card" onclick="setActiveCard(1, '.desmar')">
+        <div class="card" onclick="setActiveCard(2, '.desmar')">
             <div class="pfp" id="sah-pic"><div class="title-name">Head of Marketing</div></div>
             <div class="desc">
                 <div class="name"><h3>Sahil Sawant</h3></div>
@@ -86,21 +93,21 @@ OUR TEAM
     <div class="carousel-3">
         <div class="arrow arrow-left" onclick="changeCard(-1, '.finlog')"><</div>
         <div class="card" onclick="setActiveCard(0, '.finlog')">
-            <div class="pfp" id="abh-pic"><div class="title-name">Head of Finance & Logistics</div></div>
+            <div class="pfp" id="abh-pic"><div class="title-name">Head of Logistics</div></div>
             <div class="desc">
                 <div class="name"><h3>Abhinav Nair</h3></div>
                 <button class="openModal">See More</button>
             </div>
         </div>
         <div class="card active" onclick="setActiveCard(1, '.finlog')">
-            <div class="pfp" id="jor-pic"><div class="title-name">Head of Finance & Logisitics</div></div>
+            <div class="pfp" id="jor-pic"><div class="title-name">Head of Finance</div></div>
             <div class="desc">
                 <div class="name"><h3>Jordan Bout</h3></div>
                 <button class="openModal">See More</button>
             </div>
         </div>
         <div class="card" onclick="setActiveCard(2, '.finlog')">
-            <div class="pfp" id="gol-pic"><div class="title-name">Head of Finance & Logistics</div></div>
+            <div class="pfp" id="gol-pic"><div class="title-name">Head of Logistics</div></div>
             <div class="desc">
                 <div class="name"><h3>Aditya Golchha</h3></div>
                 <button class="openModal">See More</button>

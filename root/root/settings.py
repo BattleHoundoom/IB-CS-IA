@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +85,14 @@ DATABASES = {
     }
 }
 
+#REST_FRAMEWORK = {
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework_simplejwt.authentication.JWTAuthentication',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#        'rest_framework.permissions.IsAuthenticated',
+#    ),
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -137,7 +147,7 @@ STATICFILES_FINDERS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+'''
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -170,3 +180,4 @@ LOGGING = {
         },
     }
 }
+'''

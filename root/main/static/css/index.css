@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Wellfleet&family=Workbench&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Wellfleet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@600&display=swap');
 
 :root {
     --pri: #000;
@@ -7,6 +8,8 @@
     --sec: #800080;
     --wobble: -20px;
     --tilt: 10deg;
+    --sec-light: #ff058a;
+    --sec-dark: #5d05ff;
 }
 
 .hero {
@@ -63,8 +66,8 @@
 .teambtn:link,
 .teambtn:visited {
     color: var(--acc);
-    font-size: 1.6rem;
-    background: radial-gradient(circle, #fc81fc, var(--sec));
+    font-size: 2rem;
+    background: linear-gradient(to right, var(--sec-dark), var(--sec-light));
     border: 0.15rem solid var(--acc);
     border-radius: 50px;
     width: 35%;
@@ -73,13 +76,14 @@
     align-items: center; /* Center the text horizontally */
     justify-content: space-evenly; /* Center the text vertically */
     text-decoration: none; /* Remove default underline */
-    font-weight: bold;
-    transition: transform 0.1s;
-    font-family: "Wellfleet", monospace;
+    font-weight: bolder;
+    font-family: 'Podkova', serif;
+    transition: border-width 0.3s ease, width 0.3s ease, transform 0.3s ease;
 }
 
 .teambtn:hover {
-    transform: scale(1.2) translateY(-1rem);
+    transform: scale(1.1);
+    border-width: 0.3rem;
 }
 
 .svg-container {
@@ -93,6 +97,98 @@
 
 #grppic {
     width: 100%;
+}
+
+.blog {
+    width: 100%;
+    height: 75vh;
+    background: var(--pri);
+    text-align: center;
+}
+
+.checkoutblog {
+    color: var(--acc);
+    font-size: 2.5rem;
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+    padding-top: 3%;
+}
+
+.b-articles {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    background: var(--pri);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.altar-link {
+    display: inline-block;  /* Ensure <a> tag takes up block space */
+    max-width: 25%;  /* Match the card max-width */
+    height: 80%;     /* Match the card height */
+    margin: 10px;
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    transition: transform 0.3s ease-out;
+}
+
+.altar-link:hover {
+    transform: scale(1.1);
+}
+
+.altar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid darkblue;
+    border-radius: 5%;
+    text-align: center;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.altar img {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    object-position: center;
+    transform: translate(-50%, -50%);
+    border: 3px solid darkblue;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.altar h2 {
+    margin-top: auto;
+    text-align: center;
+    color: var(--acc);
+    font-size: 1rem;
+    padding: 5%;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.altar h2:hover {
+    text-decoration: underline;
 }
 
 .linedivider {
@@ -128,6 +224,7 @@
     font-variation-settings:
         "BLED" 0,
         "SCAN" 0;
+    
 }
 
 .map {
@@ -214,6 +311,11 @@ iframe {
     100% { transform: rotateZ(calc(-1 * var(--tilt))); }
 }
 
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 @media (max-width: 1480px) {
     .club, .school {
         max-width: 20%;
@@ -222,6 +324,7 @@ iframe {
     .teambtn:link,
     .teambtn:visited {
         width: 48%;
+        font-size: 1.75rem;
     }
 
     .brief-desc {
@@ -255,6 +358,16 @@ iframe {
     .brief-desc {
         font-size: 1rem;
     }
+
+    .blog {
+        height: 65vh;
+    }
+
+
+
+    .altar h2 {
+        font-size: 0.75rem;
+    }
 }
 
 @media (max-width: 960px) {
@@ -265,8 +378,13 @@ iframe {
     .teambtn:link,
     .teambtn:visited {
         width: 70%;
+        font-size: 1.5rem;
     }
+
+    
 }
+
+
 
 @media (max-width: 720px) {
     :root {
@@ -302,7 +420,33 @@ iframe {
     .teambtn:visited {
         width: 90%;
     }
+
+    
+    .blog {
+        height: 55vh;
+    }
+
+    .altar h2 {
+        font-size: 0.6rem;
+    }
+    
 }
 
+@media (max-width: 650px) {
+    .teambtn,
+    .teambtn:link,
+    .teambtn:visited {
+        font-size: 1.5rem;
+    }
 
+    .brief-desc {
+        font-size: 0.8rem;
+    }
+}
+
+@keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+}
 

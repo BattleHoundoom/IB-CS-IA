@@ -117,7 +117,7 @@
 dialog {
     display: none;
     flex-direction: row;
-    height: 60%;
+    height: 75%;
     min-width: 30vw;
     max-width: 50vw;
     position: fixed;
@@ -125,7 +125,7 @@ dialog {
     background: transparent;
     animation: openAnim 1s ease-out;
     z-index: 10;
-    top: 20%;
+    top: 0%;
     overflow: hidden;
 }
 
@@ -134,13 +134,11 @@ dialog {
 .content-container {
     background: var(--pri);
     color: var(--acc);
-    
+    position: relative;
     height: 100%;
     min-width: 100%;
     max-width: 60vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    text-align: center;
     border: 0.25em solid #f4ddb5;
     border-radius: 5%;
     overflow: hidden;
@@ -150,24 +148,45 @@ dialog {
     pointer-events: auto;
 }
 
-.content-container h1 {
+.content-container p {
     text-align: center;
     font-family: 'Montagu Slab', serif;
     font-size: 2.5rem;
 }
 
-.content-container h2 {
+.content-container h6 {
     text-align: center;
     font-family: 'Bungee Spice', sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
-.content-container h3 {
+.content-container h1 {
+    text-align: center;
+    font-family: 'Montagu Slab', serif;
+    border: var(--acc) solid 0.15em;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.content-container h2 {
     text-align: center;
 }
 
 .content-container h4 {
+    margin-top: 10%;
     text-align: center;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.stats-container h2 {
+    font-weight: bolder;
 }
 
 .circle {

@@ -1,7 +1,7 @@
 {% extends './base.html' %}
 
 {% block title %}
-OUR ACTIVITIES
+Activities
 {% endblock %}
 
 {% block links %}
@@ -11,7 +11,33 @@ OUR ACTIVITIES
 {% endblock %}
 
 {% block content %}
-
+<div class="canvas">
+    <div class="level">
+        <div class="card" onclick="setActiveCard(0, '.finlog')">
+            <div class="pfp" id="abh-pic"><div class="title-name">Head of Finance & Logistics</div></div>
+            <div class="desc">
+                <div class="name"><h3>Abhinav Nair</h3></div>
+                <button class="openModal">See More</button>
+            </div>
+        </div>
+    </div>
+    <div class="level">
+        <div class="card" onclick="setActiveCard(0, '.finlog')">
+            <div class="pfp" id="abh-pic"><div class="title-name">Head of Finance & Logistics</div></div>
+            <div class="desc">
+                <div class="name"><h3>Abhinav Nair</h3></div>
+                <button class="openModal">See More</button>
+            </div>
+        </div>
+        <div class="card" onclick="setActiveCard(0, '.finlog')">
+            <div class="pfp" id="abh-pic"><div class="title-name">Head of Finance & Logistics</div></div>
+            <div class="desc">
+                <div class="name"><h3>Abhinav Nair</h3></div>
+                <button class="openModal">See More</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 

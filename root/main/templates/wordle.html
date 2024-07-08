@@ -23,9 +23,20 @@ Wordle
 <div id="wordle-data" style="display: none;" data-state="{{ state }}" data-data="{{ data }}"></div>
 <dialog id="winModal">
     <div class="content-container">
-        <h1>Congratulations!!!</h1>
-        <h3>You Successfully Guessed the Secret word:</h3>
-        <h2>  </h2>
+        <p>Congratulations!!!</p>
+        <h2>Secret word:</h2>
+        <h6 id="reveau">  </h6>
+        <h1>Community Stats</h1>
+        
+        <div class="stats-container">
+            <h6>{{ total_attempted }}</h6>
+            <h6>{{ total_solved }}</h6>
+        </div>
+        <div class="stats-container">
+            <h2>Wordles Attempted</h2>
+            <h2>Wordles Solved</h2>
+        </div>
+        
         <h4> Return tomorrow for a new Wordle!!! </h4>
     </div>
     <button class="circle" id="CloseWinModal" onclick="closeModal('#winModal')"></button>
@@ -33,9 +44,21 @@ Wordle
 
 <dialog id="loseModal">
     <div class="content-container">
-        <h1>Game Over!!!</h1>
-        <h3>Secret word:</h3>
-        <h2>  </h2>
+        <p>Game Over!!!</p>
+        <h2>Secret word:</h2>
+        <h6 id="revea">  </h6>
+
+        <h1>Community Stats</h1>
+        
+        <div class="stats-container">
+            <h6>{{ total_attempted }}</h6>
+            <h6>{{ total_solved }}</h6>
+        </div>
+        <div class="stats-container">
+            <h2>Wordles Attempted</h2>
+            <h2>Wordles Solved</h2>
+        </div>
+
         <h4> Return tomorrow for a new Wordle!!! </h4>
     </div>
     <button class="circle" id="CloseLoseModal" onclick="closeModal('#loseModal')"></button>
@@ -45,12 +68,6 @@ Wordle
 
 {% block scripts %}
 {% load static %}
-<script>
-    const daily_word = "{{ secret }}";
-    document.querySelectorAll(".content-container h2").forEach((e) => {
-        e.textContent = daily_word;
-    })
-</script>
 <script defer src="{% static 'js/wordle.js' %}"></script>
 <script src="https://kit.fontawesome.com/be9ab13814.js" crossorigin="anonymous"></script>
 {% endblock %}

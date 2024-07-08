@@ -6,17 +6,14 @@
     <title>{% block title %} Base {% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/png">
     {% block links %}{% endblock %}
 </head>
 <body style="margin:0;">
     <header>
         <nav class="navbar">
             <div class="club-name"><h3 id="navbar-title">GIIS Astronomy-Aviation Club</h3></div>
-            <a href="#" class="toggle-btn">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
+            
             <div class="navbar-links">
                 <ul>
                     <li><a href="{% url 'index' %}">Home</a></li>
@@ -54,7 +51,7 @@
                 <h2>Socials</h2>
                 <div class="icons">
                     <a href="https://www.instagram.com/giis_aviation_astronomy_club/"><i class="fa-brands fa-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://wa.link/979h3y"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="https://github.com/BattleHoundoom/IB-CS-IA"><i class="fa-brands fa-github"></i></a>
                 </div>
                 <button class="btn">Admin Portal</button>
