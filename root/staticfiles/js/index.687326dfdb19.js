@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fadeInCards(cards, newArticles) {
         for (let i = 0; i < cards.length; i++) {
-            cards[i].querySelector('img').src = `static/${newArticles[i].photo}`;
+            cards[i].querySelector('img').src = `${newArticles[i].photo}`;
             cards[i].parentElement.href = newArticles[i].link;
             cards[i].querySelector('h2').textContent = newArticles[i].title;
             cards[i].classList.remove('fade-out');

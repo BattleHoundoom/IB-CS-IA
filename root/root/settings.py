@@ -145,8 +145,8 @@ STATICFILES_FINDERS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-'''
-LOGGING = {
+
+'''LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
@@ -177,5 +177,4 @@ LOGGING = {
             'level': 'DEBUG',
         },
     }
-}
-'''
+}'''

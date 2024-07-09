@@ -1,24 +1,22 @@
 function reloadIfDayChanged() {
-    // Get the current date
+    
     const currentDate = new Date();
 
-    // Check if the day has changed
+    
     if (currentDate.getDate() !== window.lastCheckedDay) {
         window.location.reload(true); // Reload the page
     }
 
-    // Update the last checked day
+    
     window.lastCheckedDay = currentDate.getDate();
 }
 
-// Set the initial value for the last checked day
+
 window.lastCheckedDay = new Date().getDate();
 
-// Check for day changes every minute (adjust the interval as needed)
 setInterval(reloadIfDayChanged, 60000);
 
 
-//const wordList = ['penis', 'house', 'radio', 'flame', 'shoot', 'crane'];
 
 var state = {
     ans: "",
@@ -155,7 +153,7 @@ function eventListener() {
             if (e.key === "Enter") {
                 if (state.currentCol === 5) {
                     const word = getWord();
-                    console.log(word);
+                    //console.log(word);
                     EvalWord(word).then(result => {
                         if (result) {
                             revealWord(word);
@@ -208,8 +206,8 @@ function setup() {
     
     state.ongoing = parseInt(gameState);
 
-    console.log("State:", state.ongoing);
-    console.log("Data:", data);
+    //console.log("State:", state.ongoing);
+    //console.log("Data:", data);
     
 
     const grid = document.querySelector(".grid");
@@ -270,8 +268,6 @@ async function fetchDailyWord() {
         }
         const responseJson = await response.json();
         state.ans = (responseJson.secret_word).toLowerCase();
-        console.log('Secret Word:', state.ans);
-        // Use the secret word in your Wordle game
 
         setup();
 
