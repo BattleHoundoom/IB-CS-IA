@@ -24,6 +24,9 @@ def about(request):
 def activities(request):
     return render(request, 'activities.html')
 
+def temp(request):
+    return render(request, 'temp.html')
+
 def wordle(request):
     user_ip = get_client_ip(request)
     #word = WordList.get_daily_word()
