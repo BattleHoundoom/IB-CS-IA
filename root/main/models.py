@@ -38,3 +38,14 @@ class WordleStats(models.Model):
         stats, created = cls.objects.get_or_create(pk=1)
         stats.total_solved += 1
         stats.save()
+
+class Essays(models.Model):
+    student_name = models.CharField(max_length=50, unique=True)
+    category = models.BooleanField(default=False)
+    grade = models.CharField(max_length=10, default=0)
+    section = models.CharField(max_length=10, default=0)
+    essay_link = models.URLField(max_length=200, default='')
+    winner = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.student_name} - {self.category} - {self.grade} - {self.section}"

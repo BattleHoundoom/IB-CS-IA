@@ -1,0 +1,323 @@
+:root {
+    --pri: #000;
+    --sec-light: #ff058a;
+    --sec-dark: #5d05ff;
+    --acc: #F4DDB5;
+}
+
+main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    text-align: center;
+    height: fit-content;
+    background-color: var(--pri);
+    margin: 0;
+    
+    padding: 0;
+    padding-bottom: 5vh;
+}
+
+.podium-container {
+    position: relative;
+    height: 75vh; /* Adjusted height for better visibility */
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+.podium {
+    width: 100%;
+    height: 100%;
+    display: none; /* Hide all podiums by default */
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 1s, transform 1s;
+}
+
+.podium.active {
+    display: block; /* Show the active podium */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: var(--acc);
+}
+
+.podium h2 {
+    padding-bottom: 2.5%; /* Increased margin for more space */
+    padding-top: 2.5%;
+    transition: opacity 1s;
+    color: var(--sec-dark);
+    margin: 0;
+    font-size: 2em;
+    animation: moveUp 2s ease-in forwards;
+}
+
+.podium-places {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 80%; /* Ensure it does not overextend below its parent container */
+    position: relative;
+    overflow: hidden; /* Hide overflow */
+}
+
+.place {
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Ensure items start from the bottom */
+}
+
+
+.place img {
+    width: 5vw; /* Fixed width in viewport units */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space between medal and podium */
+    animation: moveUp 2s ease-in forwards;
+}
+
+.podium-stand {
+    width: 100%;
+    background-color: #ccc;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.first-stand {
+    height: 75%;
+    background-color: gold;
+    animation: riseUp1stStand 2s ease-in-out forwards;
+}
+
+.second-stand {
+    height: 50%;
+    background-color: silver;
+    animation: riseUp2ndStand 2s ease-in-out forwards;
+}
+
+.third-stand {
+    height: 25%;
+    background-color: #CD7F32;
+    animation: riseUp3rdStand 2s ease-in-out forwards;
+}
+
+.place p {
+    margin: 5px 0;
+    color: var(--acc);
+    animation: moveUp 2s ease-in forwards;
+}
+
+.place .name {
+    font-weight: bold;
+    font-size: 1.5em;
+    animation: moveUp 2s ease-in forwards;
+}
+
+.place .placement {
+    font-size: 1.2em;
+}
+
+.archive {
+    position: relative;
+    height: 70%;;
+    padding-top: 5%;
+}
+
+/* Styles for search bar and filters */
+.query-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.query-bar input[type="text"] {
+    flex-basis: 50%;
+    padding: 10px;
+    border: 2px solid var(--sec-dark);
+    border-radius: 5px 0 0 5px;
+    background-color: var(--pri);
+    color: var(--acc);
+    font-size: 1em;
+}
+
+.query-bar input::placeholder {
+    color: var(--acc);
+}
+
+.query-bar input:focus {
+    outline: none;
+    border-color: var(--sec-light);
+}
+
+.query-bar .search-icon {
+    padding: 10px;
+    background-color: var(--sec-dark);
+    border: 2px solid var(--sec-dark);
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    color: var(--acc);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.query-bar select {
+    margin: 0 10px;
+    padding: 10px;
+    border: 2px solid var(--sec-dark);
+    border-radius: 5px;
+    background-color: var(--pri);
+    color: var(--acc);
+    font-size: 1em;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='var(--acc)' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+    cursor: pointer;
+}
+
+.query-bar select:focus {
+    outline: none;
+    border-color: var(--sec-light);
+}
+
+.essay-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 2px solid var(--sec-dark);
+    border-radius: 5px 0 0 5px;
+    background-color: var(--pri);
+    color: var(--acc);
+    font-size: 1em;
+    
+}
+
+.essay-list .header {
+    display: flex;
+    flex-direction: row;
+    height: 2em;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--sec-dark);
+    border-top: 2px solid var(--sec-dark);
+    border-bottom: 2px solid var(--sec-dark);
+    border-radius: 5px 0 0 0;
+    padding: 15px 0;
+}
+
+.essay-item {
+    display: flex;
+    flex-direction: row;
+    height: 2em;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background: transparent;
+    border-top: 2px solid var(--sec-dark);
+    border-bottom: 2px solid var(--sec-dark);
+    
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background 0.2s ease;
+    cursor: pointer; /* Makes the whole card clickable */
+}
+
+.essay-item:hover {
+    border: 2px solid var(--sec-dark);
+    border-radius: 8px;
+    background: var(--sec-light);
+    transform: scale(1.02);
+    
+}
+
+
+
+.essay-name {
+    font-size: 1.2em;
+    margin: auto;
+    color: var(--acc);
+    flex-basis: 30%;
+}
+
+.essay-grade {
+    font-size: 1.2em;
+    margin: auto;
+    color: var(--acc);
+    flex-basis: 10%;
+}
+
+.essay-section {
+    font-size: 1.2em;
+    margin: auto;
+    color: var(--acc);
+    flex-basis: 10%;
+}
+
+.essay-category {
+    font-size: 1.2em;
+    margin: auto;
+    color: var(--acc);
+    flex-basis: 20%;
+}
+
+@keyframes riseUp1stStand {
+    from {
+        height: 0;
+    }
+    to {
+        height: 75%;
+    }
+}
+
+@keyframes riseUp2ndStand {
+    from {
+        height: 0;
+    }
+    to {
+        height: 50%;
+    }
+}
+
+@keyframes riseUp3rdStand {
+    from {
+        height: 0;
+    }
+    to {
+        height: 25%;
+    }
+}
+
+@keyframes moveUp {
+    from {
+        
+        opacity: 0;
+    }
+    to {
+        
+        opacity: 1;
+    }
+}

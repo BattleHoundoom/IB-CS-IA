@@ -41,6 +41,8 @@ header {
     width: 100%;
     line-height: 1em;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar {
@@ -133,6 +135,8 @@ header {
 main {
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 footer {
@@ -310,7 +314,7 @@ ul li a {
     position: relative;
     width: fit-content;
     transition: all 0.3s ease;
-    cursor: not-allowed;
+    cursor: pointer;
 }
   
 #change-to-btn:hover-when-ready {

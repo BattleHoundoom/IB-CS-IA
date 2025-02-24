@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from .models import WordleProgress
 from .models import WordList
 from .models import WordleStats
+from .models import Essays
+
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import date
@@ -26,6 +28,16 @@ def activities(request):
 
 def temp(request):
     return render(request, 'temp.html')
+
+def essays(request):
+    essays = Essays.objects.all()
+    for essay in essays:
+        if essay.category == True:
+            essay.category = "Senior"
+        else:
+            essay.category = "Junior"
+    return render(request, 'essay.html', {'essays': essays})
+    #return render(request, 'essay.html')
 
 def wordle(request):
     user_ip = get_client_ip(request)
@@ -72,8 +84,8 @@ def get_client_ip(request):
     return ip
 
 
-
 @csrf_exempt
+#@cors_allow_origin(["https://giisastroavi.club", "https://www.giisastroavi.club"])
 def update_wordle_progress(request):
     try:
         if request.method == 'POST':
@@ -120,13 +132,15 @@ def load_articles():
     file_path = os.path.join(settings.BASE_DIR, "main/static/img/blog/metadata.json")
     with open(file_path, 'r') as file:
         return json.load(file)
-    
+
+
 def get_random_articles(request):
     articles = load_articles()
     random.shuffle(articles)
     selected_articles = articles[:3]
     return JsonResponse({'articles': selected_articles})
 
+#@cors_allow_origin(["https://giisastroavi.club", "https://www.giisastroavi.club"])
 def get_secret_word(request):
     today_word = WordList.get_daily_word()
     if today_word is not None:

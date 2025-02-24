@@ -1,0 +1,119 @@
+{% extends './base.html' %}
+
+{% block title %}
+Essay Repository
+{% endblock %}
+
+{% block links %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/essay.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Stellar Insights Essay Writing Competition</h1>
+    
+    <div class="podium-container">
+        <div class="podium junior active">
+            <h2>Junior Category</h2>
+            <div class="podium-places">
+                <div class="place second">
+                    <img src="{% static 'img/silver_medal.svg' %}" alt="Silver Medal">
+                    <p class="name">Suzzane Elizabeth</p>
+                    <div class="podium-stand second-stand"></div>
+                </div>
+                <div class="place first">
+                    <img src="{% static 'img/gold_medal.svg' %}" alt="Gold Medal">
+                    <p class="name">Yanbo Zhao</p>
+                    <div class="podium-stand first-stand"></div>
+                </div>
+                <div class="place third">
+                    <img src="{% static 'img/bronze_medal.svg' %}" alt="Bronze Medal">
+                    <p class="name">Naisha Vohra</p>
+                    <div class="podium-stand third-stand"></div>
+                </div>
+            </div>
+        </div>
+        <div class="podium senior">
+            <h2>Senior Category</h2>
+            <div class="podium-places">
+                <div class="place second">
+                    <img src="{% static 'img/silver_medal.svg' %}" alt="Silver Medal">
+                    <p class="name">Janessa Mathai</p>
+                    <div class="podium-stand second-stand"></div>
+                </div>
+                <div class="place first">
+                    <img src="{% static 'img/gold_medal.svg' %}" alt="Gold Medal">
+                    <p class="name">Tejas Singh Kohli</p>
+                    <div class="podium-stand first-stand"></div>
+                </div>
+                <div class="place third">
+                    <img src="{% static 'img/bronze_medal.svg' %}" alt="Bronze Medal">
+                    <p class="name">Swikruti Das</p>
+                    <div class="podium-stand third-stand"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="archive">
+        <h1>Essay Archive</h1>
+        <div class="query-bar">
+            <input type="text" id="search-bar" placeholder="Search for participant names...">
+            <div class="search-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <select id="filter-grade">
+                <option value="">All Grades</option>
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <!-- Add grade options dynamically -->
+            </select>
+            <select id="filter-section">
+                <option value="">All Sections</option>
+                <option value="A">Section A</option>
+                <option value="B">Section B</option>
+                <option value="C">Section C</option>
+                <option value="D">Section D</option>
+                <option value="E">Section E</option>
+                <!-- Add section options dynamically -->
+            </select>
+            <select id="filter-category">
+                <option value="">All Categories</option>
+                <option value="junior">Junior Category</option>
+                <option value="senior">Senior Category</option>
+            </select>
+        </div>
+
+        <div class="essay-list">
+            <div class="header">
+                <h3 class="essay-name">Participant Name</h3>
+                <p class="essay-grade">Grade</p>
+                <p class="essay-section">Section</p>
+                <p class="essay-category">Category</p>
+            </div>
+            {% for essay in essays %}
+                
+                <div class="essay-item" onclick="window.open('{{ essay.essay_link }}', '_blank')">
+                    
+                    <h3 class="essay-name">{{ essay.student_name }}</h3>
+                    <p class="essay-grade">{{ essay.grade }}</p>
+                    <p class="essay-section">{{ essay.section }}</p>
+                    <p class="essay-category">{{ essay.category }}</p>
+                    
+                </div>
+                
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<script defer src="{% static 'js/essay.js' %}"></script>
+<script src="https://kit.fontawesome.com/be9ab13814.js" crossorigin="anonymous"></script>
+{% endblock %}

@@ -19,6 +19,7 @@
                     <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">Our Team</a></li>
                     <li><a href="{% url 'wordle' %}">Wordle</a></li>
+                    <li><a href="{% url 'essays' %}">Essay Competition</a></li>
                 </ul>
             </div>
         </nav>
@@ -45,6 +46,7 @@
                     <li><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'about' %}">Our Team</a></li>
                     <li><a href="{% url 'wordle' %}">Wordle</a></li>
+                    <li><a href="{% url 'essays' %}">Essay Competition</a></li>
                 </ul>
             </div>
             <div class="col">
@@ -54,7 +56,7 @@
                     <a href="https://wa.link/979h3y"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="https://github.com/BattleHoundoom/IB-CS-IA"><i class="fa-brands fa-github"></i></a>
                 </div>
-                <button class="btn">Admin Portal</button>
+                <button id="admin-port" class="btn" onclick="window.location.href='{% url "admin:index" %}'">Admin Portal</button>
             </div>
         </div>
         

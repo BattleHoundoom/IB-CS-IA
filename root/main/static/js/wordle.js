@@ -159,7 +159,7 @@ function eventListener() {
                             revealWord(word);
                             state.currentRow++;
                             state.currentCol = 0;
-                            fetch('/update_wordle_progress/', {
+                            fetch('/api/update_wordle_progress/', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/x-www-form-urlencoded',
