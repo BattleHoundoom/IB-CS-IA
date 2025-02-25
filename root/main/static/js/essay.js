@@ -5,21 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterSection = document.getElementById('filter-section');
     const essayList = document.querySelector('.essay-list');
     const podiums = document.querySelectorAll('.podium');
-    let currentIndex = 0;
 
     const allEssays = Array.from(document.querySelectorAll('.essay-item'));
 
+    let currentIndex = 0;
+
     function filterEssays() {
+        // Get the filter values from the DOM
         const query = searchBar.value.toLowerCase();
         const category = filterCategory.value.toLowerCase();
         const grade = filterGrade.value.toLowerCase();
         const section = filterSection.value.toLowerCase();
-        //console.log(category == 'junior');
-        //console.log(grade == '');
-        //console.log(section == '');
-        //console.log(query == '');
 
-        // Clear the essay list
+        // Clear the essay list except for the table header
         essayList.innerHTML = `<div class="header">
                 <h3 class="essay-name">Participant Name</h3>
                 <p class="essay-grade">Grade</p>
@@ -27,23 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="essay-category">Category</p>
             </div>`;
 
-        // Filter essays
+        // Filter essays by looping through each individual essay
         allEssays.forEach(essay => {
-            //const text = essay.textContent.toLowerCase();
-            console.log(essay);
-            console.log(essay.children[1].textContent.toLowerCase());
-            console.log(grade);
-            // Extract values from the essay text
+            // Extract values from the essay text and compare with the filters
             const matchesQuery = (query === '') || (essay.children[0].textContent.toLowerCase().includes(query));
             const matchesGrade = (grade === '') || (grade === essay.children[1].textContent.toLowerCase());
             const matchesSection = (section === '') || (section === essay.children[2].textContent.toLowerCase());
             const matchesCategory = (category === '') || (category === essay.children[3].textContent.toLowerCase());
 
             // If it matches all filters, append it back to the list
-            console.log(matchesQuery);
-            console.log(matchesGrade);
-            console.log(matchesSection);
-            console.log(matchesCategory);
             if (matchesQuery && matchesGrade && matchesSection && matchesCategory) {
                 essayList.appendChild(essay);
             }

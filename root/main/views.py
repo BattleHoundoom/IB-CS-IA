@@ -13,7 +13,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import date
 
-# Create your views here.
 def index(request):
     articles = load_articles()
     random.shuffle(articles)
@@ -85,7 +84,6 @@ def get_client_ip(request):
 
 
 @csrf_exempt
-#@cors_allow_origin(["https://giisastroavi.club", "https://www.giisastroavi.club"])
 def update_wordle_progress(request):
     try:
         if request.method == 'POST':
@@ -100,7 +98,6 @@ def update_wordle_progress(request):
 
             # Assuming the client sends the guess in the POST data
             guess = request.POST.get('guess', '')
-            #pending_str = request.POST.get('pending', '')
             state = int(request.POST.get('state', 0))
 
             if wordle_progress.state == 0:
@@ -115,11 +112,7 @@ def update_wordle_progress(request):
 
             # Update the data field with the guess
             wordle_progress.data += guess
-            #wordle_progress.ongoing = pending
-            #wordle_progress.state = state
-
             wordle_progress.day = current_date
-
             wordle_progress.save()
 
             return JsonResponse({'message': 'Progress updated successfully'})

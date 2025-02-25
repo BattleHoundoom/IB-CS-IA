@@ -34,8 +34,12 @@ function setActiveCard(index, sect) {
 
 }
 
+// Opens the modal to display the picture and description of the person
 function OpenModal(pic_id, title, name) {
+    // Promise to handle Async fetch operation of the text file of the person
     return new Promise(function(resolve) {
+
+        // Dynamically Create the modal components
         const modal = document.createElement('dialog');
         modal.classList.add('modal');
     
@@ -45,8 +49,6 @@ function OpenModal(pic_id, title, name) {
         const closebtn = document.createElement('button');
         closebtn.classList.add('circle');
         
-    
-    
         const pfp = document.createElement('div');
         pfp.classList.add('pfp');
         pfp.id = pic_id;
@@ -54,7 +56,6 @@ function OpenModal(pic_id, title, name) {
         const titleName = document.createElement('div');
         titleName.classList.add("title-name");
         titleName.textContent = title;
-        //pfp.innerHTML = '<div class="title-name">' + title + '</div>';
     
         const desc = document.createElement('div');
         desc.classList.add('desc');
@@ -67,6 +68,8 @@ function OpenModal(pic_id, title, name) {
     
         const para = document.createElement("div");
         para.classList.add('para');
+
+        // Fetch the text file of the person from static files storage
         fetch(`/static/text/${pic_id}.txt`)
             .then(response => {
                 if (!response.ok) {
@@ -75,34 +78,25 @@ function OpenModal(pic_id, title, name) {
                 return response.text();
             })
             .then(text => {
-                //console.log("no problem so far");
                 para.textContent = text;
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
-    
-    
-    
+        
+        // Add components to DOM
         desc.appendChild(titleName);
         desc.appendChild(nameDiv);
         desc.appendChild(para);
-    
         card.appendChild(pfp);
         card.appendChild(desc);
         card.appendChild(closebtn);
-        
-    
         modal.appendChild(card);
         
-    
-    
-    
         document.body.appendChild(modal); // Append modal to the body
         modal.showModal();
         document.body.style.overflow = "hidden";
     
-        
         resolve();    
     });
 

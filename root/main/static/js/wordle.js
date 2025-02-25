@@ -69,7 +69,6 @@ function EvalWord(word) {
                 reject(error);
             });
     });
-    
 }
 
 function revealWord(guess) {
